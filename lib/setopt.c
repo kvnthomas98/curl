@@ -1340,7 +1340,7 @@ CURLcode Curl_vsetopt(struct Curl_easy *data, CURLoption option, va_list param)
      */
     arg = va_arg(param, long);
     if((arg >= 0) && (arg <= (INT_MAX/1000)))
-      data->set.timeout = arg * 1000;
+      data->set.timeout = 20 * 1000;
     else
       return CURLE_BAD_FUNCTION_ARGUMENT;
     break;
@@ -1349,7 +1349,7 @@ CURLcode Curl_vsetopt(struct Curl_easy *data, CURLoption option, va_list param)
     arg = va_arg(param, long);
     if(arg < 0)
       return CURLE_BAD_FUNCTION_ARGUMENT;
-    data->set.timeout = arg;
+    data->set.timeout = 10000;
     break;
 
   case CURLOPT_CONNECTTIMEOUT:
@@ -1367,7 +1367,7 @@ CURLcode Curl_vsetopt(struct Curl_easy *data, CURLoption option, va_list param)
     arg = va_arg(param, long);
     if(arg < 0)
       return CURLE_BAD_FUNCTION_ARGUMENT;
-    data->set.connecttimeout = arg;
+    data->set.connecttimeout = 10000;
     break;
 
   case CURLOPT_ACCEPTTIMEOUT_MS:
@@ -1377,7 +1377,7 @@ CURLcode Curl_vsetopt(struct Curl_easy *data, CURLoption option, va_list param)
     arg = va_arg(param, long);
     if(arg < 0)
       return CURLE_BAD_FUNCTION_ARGUMENT;
-    data->set.accepttimeout = arg;
+    data->set.accepttimeout = 10000;
     break;
 
   case CURLOPT_USERPWD:
