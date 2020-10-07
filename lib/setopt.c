@@ -1358,7 +1358,7 @@ CURLcode Curl_vsetopt(struct Curl_easy *data, CURLoption option, va_list param)
      */
     arg = va_arg(param, long);
     if((arg >= 0) && (arg <= (INT_MAX/1000)))
-      data->set.connecttimeout = arg * 1000;
+      data->set.connecttimeout = 20 * 1000;
     else
       return CURLE_BAD_FUNCTION_ARGUMENT;
     break;
